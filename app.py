@@ -1,10 +1,12 @@
 from enum import Enum
+from ui import UI
 
 Stage = Enum("Stage", [ "RED", "GREEN", "REFACTOR" ])
 
 class App:
 
     def __init__(self):
+        self.ui = UI()
         self.stage = Stage.RED
 
     def run(self):

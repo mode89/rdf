@@ -1,4 +1,5 @@
 from app import Stage, App
+from ui import UI
 import unittest
 
 class TestApp(unittest.TestCase):
