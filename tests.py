@@ -1,4 +1,4 @@
-from widget import Widget
+from widget import Stage, Widget
 import unittest
 
 class TestWidget(unittest.TestCase):
