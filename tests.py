@@ -34,5 +34,9 @@ class TestApp(unittest.TestCase):
     def test_app_has_ui(self):
         self.assertIsInstance(self.app.ui, UI)
 
+    def test_run_ui(self):
+        self.app.run()
+        self.app.ui.run.assert_called_once();
+
 if __name__ == "__main__":
     unittest.main()
