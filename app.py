@@ -10,7 +10,7 @@ class App:
         self.stage = Stage.RED
 
     def run(self):
-        pass
+        self.ui.run()
 
     def advance_stage(self):
         if self.stage == Stage.RED:
