@@ -11,5 +11,10 @@ class TestWidget(unittest.TestCase):
         widget = Widget()
         self.assertEqual(widget.get_stage(), Stage.RED)
 
+    def test_advance_from_red_to_green(self):
+        widget = Widget()
+        widget.advance()
+        self.assertEqual(widget.get_stage(), Stage.GREEN)
+
 if __name__ == "__main__":
     unittest.main()
