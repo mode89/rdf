@@ -24,5 +24,8 @@ class TestApp(unittest.TestCase):
         self.app.advance_stage()
         self.assertEqual(self.app.stage, Stage.RED)
 
+    def test_app_has_ui(self):
+        self.assertIsInstance(self.app.ui, UI)
+
 if __name__ == "__main__":
     unittest.main()
