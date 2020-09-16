@@ -9,7 +9,7 @@ class Widget:
     def get_stage(self):
         return self.stage
 
-    def advance(self):
+    def advance_stage(self):
         if self.stage == Stage.RED:
             self.stage = Stage.GREEN
 
