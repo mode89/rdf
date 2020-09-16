@@ -3,7 +3,7 @@ import unittest
 
 class TestWidget(unittest.TestCase):
 
-    def test_show_widget(self):
+    def test_widget_is_visible(self):
         widget = Widget()
         self.assertTrue(widget.is_visible())
 
