@@ -46,7 +46,9 @@ class TestUI(unittest.TestCase):
             "ui.QApplication", autospec=True)
         self.qapplication_patcher.start()
         self.uic_patcher = mock.patch("ui.uic", autospec=True)
-        self.uic_patcher.start()
+        self.uic_mock = self.uic_patcher.start()
+        self.uic_mock.loadUi.return_value = mock.create_autospec(
+            PyQt5.QtWidgets.QMainWindow)
         self.ui = UI()
 
     def tearDown(self):
@@ -57,7 +59,7 @@ class TestUI(unittest.TestCase):
         self.assertIsInstance(self.ui.app, PyQt5.QtWidgets.QApplication)
 
     def test_has_window(self):
-        self.assertIsNotNone(self.ui.window)
+        self.assertIsInstance(self.ui.window, PyQt5.QtWidgets.QMainWindow)
 
     def test_run_app_exec(self):
         self.ui.run()
