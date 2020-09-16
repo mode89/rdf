@@ -6,12 +6,12 @@ from unittest import mock
 class TestApp(unittest.TestCase):
 
     def setUp(self):
-        self.patch_ui_class = mock.patch("app.UI", autospec=True)
-        self.patch_ui_class.start()
+        self.ui_class_patcher = mock.patch("app.UI", autospec=True)
+        self.ui_class_patcher.start()
         self.app = App()
 
     def tearDown(self):
-        self.patch_ui_class.stop()
+        self.ui_class_patcher.stop()
 
     def test_initial_stage_is_red(self):
         self.assertEqual(self.app.stage, Stage.RED)
