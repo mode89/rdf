@@ -41,12 +41,23 @@ class TestApp(unittest.TestCase):
 
 class TestUI(unittest.TestCase):
 
-    def test_ui_has_qapplication(self):
-        qapplication_patcher = mock.patch(
+    def setUp(self):
+        self.qapplication_patcher = mock.patch(
             "ui.QApplication", autospec=True)
-        qapplication_patcher.start()
-        ui = UI()
-        self.assertIsInstance(ui.app, PyQt5.QtWidgets.QApplication)
+        self.qapplication_patcher.start()
+        self.uic_patcher = mock.patch("ui.uic", autospec=True)
+        self.uic_patcher.start()
+        self.ui = UI()
+
+    def tearDown(self):
+        self.uic_patcher.stop()
+        self.qapplication_patcher.stop()
+
+    def test_has_qapplication(self):
+        self.assertIsInstance(self.ui.app, PyQt5.QtWidgets.QApplication)
+
+    def test_has_window(self):
+        self.assertIsNotNone(self.ui.window)
 
 if __name__ == "__main__":
     unittest.main()
