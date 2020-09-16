@@ -59,5 +59,9 @@ class TestUI(unittest.TestCase):
     def test_has_window(self):
         self.assertIsNotNone(self.ui.window)
 
+    def test_run_app_exec(self):
+        self.ui.run()
+        self.ui.app.exec_.assert_called_once()
+
 if __name__ == "__main__":
     unittest.main()
