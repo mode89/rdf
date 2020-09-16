@@ -21,5 +21,11 @@ class TestWidget(unittest.TestCase):
         self.widget.advance_stage()
         self.assertEqual(self.widget.stage, Stage.REFACTOR)
 
+    def test_advance_from_refactor_to_red(self):
+        self.widget.advance_stage()
+        self.widget.advance_stage()
+        self.widget.advance_stage()
+        self.assertEqual(self.widget.stage, Stage.RED)
+
 if __name__ == "__main__":
     unittest.main()
