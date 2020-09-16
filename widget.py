@@ -1,6 +1,6 @@
 from enum import Enum
 
-Stage = Enum("Stage", [ "RED", "GREEN" ])
+Stage = Enum("Stage", [ "RED", "GREEN", "REFACTOR" ])
 
 class Widget:
 
@@ -13,3 +13,5 @@ class Widget:
     def advance_stage(self):
         if self.stage == Stage.RED:
             self.stage = Stage.GREEN
+        elif self.stage == Stage.GREEN:
+            self.stage = Stage.REFACTOR
