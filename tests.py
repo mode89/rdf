@@ -1,3 +1,4 @@
+from widget import Widget
 import unittest
 
 class TestWidget(unittest.TestCase):
