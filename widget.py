@@ -10,9 +10,6 @@ class Widget:
     def is_visible(self):
         return True
 
-    def get_stage(self):
-        return self.stage
-
     def advance_stage(self):
         if self.stage == Stage.RED:
             self.stage = Stage.GREEN
