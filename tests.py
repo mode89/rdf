@@ -1,4 +1,5 @@
 from app import Stage, App
+import PyQt5
 from ui import UI
 import unittest
 from unittest import mock
@@ -37,6 +38,15 @@ class TestApp(unittest.TestCase):
     def test_run_ui(self):
         self.app.run()
         self.app.ui.run.assert_called_once();
+
+class TestUI(unittest.TestCase):
+
+    def test_ui_has_qapplication(self):
+        qapplication_patcher = mock.patch(
+            "ui.QApplication", autospec=True)
+        qapplication_patcher.start()
+        ui = UI()
+        self.assertIsInstance(ui.app, PyQt5.QtWidgets.QApplication)
 
 if __name__ == "__main__":
     unittest.main()
