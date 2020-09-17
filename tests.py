@@ -71,5 +71,12 @@ class TestUI(unittest.TestCase):
         self.ui.window.setAttribute.assert_called_with(
             PyQt5.QtCore.Qt.WA_QuitOnClose)
 
+    def test_apply_red_stage(self):
+        stage = RedStage()
+        self.ui.apply_stage(stage)
+        self.ui.set_stage_name.assert_called_with(stage.name)
+        self.ui.set_stage_hint.assert_called_with(stage.hint)
+        self.ui.set_stage_color.assert_called_with(stage.color)
+
 if __name__ == "__main__":
     unittest.main()
