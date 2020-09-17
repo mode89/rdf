@@ -42,6 +42,11 @@ class TestApp(unittest.TestCase):
         self.app.run()
         self.app.ui.run.assert_called_once();
 
+    def test_apply_stage_to_ui(self):
+        self.app.apply_stage_class(RedStage)
+        ui_apply_stage_first_argument = self.app.ui.apply_stage.call_args[0][0]
+        self.assertIsInstance(ui_apply_stage_first_argument, RedStage)
+
 class TestUI(unittest.TestCase):
 
     def setUp(self):

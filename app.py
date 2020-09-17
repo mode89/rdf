@@ -11,6 +11,7 @@ class App:
 
     def apply_stage_class(self, stage_class):
         self.stage = stage_class()
+        self.ui.apply_stage(self.stage)
 
     def advance_stage(self):
         if isinstance(self.stage, RedStage):
