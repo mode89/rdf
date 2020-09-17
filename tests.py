@@ -101,5 +101,11 @@ class TestUI(unittest.TestCase):
         self.ui.set_stage_hint("Some hint")
         self.ui.stage_hint_label.setText.assert_called_with("Some hint")
 
+    def test_advance_stage_keyboard_shortcut(self):
+        callback = mock.Mock()
+        self.ui.set_advance_stage_callback(callback)
+        self.ui.on_advance_stage_keyboard_event()
+        callback.assert_called_once()
+
 if __name__ == "__main__":
     unittest.main()

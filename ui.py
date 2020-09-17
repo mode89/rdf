@@ -36,3 +36,9 @@ class UI:
 
     def set_stage_color(self, color):
         self.window.setStyleSheet("background-color: {}".format(color))
+
+    def set_advance_stage_callback(self, callback):
+        self.advance_stage_callback = callback
+
+    def on_advance_stage_keyboard_event(self):
+        self.advance_stage_callback()
