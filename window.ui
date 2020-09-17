@@ -25,6 +25,16 @@
       </property>
      </widget>
     </item>
+    <item>
+     <widget class="QLabel" name="stage_hint">
+      <property name="text">
+       <string>Stage Hint</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
    </layout>
   </widget>
  </widget>

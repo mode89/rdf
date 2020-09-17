@@ -17,6 +17,8 @@ class UI:
         self.window.show()
         self.stage_name_label = self.window.findChild(QLabel, "stage_name")
         assert self.stage_name_label
+        self.stage_hint_label = self.window.findChild(QLabel, "stage_hint")
+        assert self.stage_hint_label
 
     def run(self):
         self.app.exec_()
@@ -30,7 +32,7 @@ class UI:
         self.stage_name_label.setText(name)
 
     def set_stage_hint(self, hint):
-        debug.not_implemented()
+        self.stage_hint_label.setText(hint)
 
     def set_stage_color(self, color):
         self.window.setStyleSheet("background-color: {}".format(color))
