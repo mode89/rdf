@@ -4,18 +4,21 @@ class App:
 
     def __init__(self):
         self.ui = UI()
-        self.stage = RedStage
+        self.apply_stage_class(RedStage)
 
     def run(self):
         self.ui.run()
 
+    def apply_stage_class(self, stage_class):
+        self.stage = stage_class()
+
     def advance_stage(self):
-        if self.stage == RedStage:
-            self.stage = GreenStage
-        elif self.stage == GreenStage:
-            self.stage = RefactorStage
-        elif self.stage == RefactorStage:
-            self.stage = RedStage
+        if isinstance(self.stage, RedStage):
+            self.apply_stage_class(GreenStage)
+        elif isinstance(self.stage, GreenStage):
+            self.apply_stage_class(RefactorStage)
+        elif isinstance(self.stage, RefactorStage):
+            self.apply_stage_class(RedStage)
 
 class RedStage:
 

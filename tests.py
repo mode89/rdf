@@ -18,22 +18,22 @@ class TestApp(unittest.TestCase):
         self.ui_class_patcher.stop()
 
     def test_initial_stage_is_red(self):
-        self.assertEqual(self.app.stage, RedStage)
+        self.assertIsInstance(self.app.stage, RedStage)
 
     def test_advance_from_red_to_green(self):
         self.app.advance_stage()
-        self.assertEqual(self.app.stage, GreenStage)
+        self.assertIsInstance(self.app.stage, GreenStage)
 
     def test_advance_from_green_to_refactor(self):
         self.app.advance_stage()
         self.app.advance_stage()
-        self.assertEqual(self.app.stage, RefactorStage)
+        self.assertIsInstance(self.app.stage, RefactorStage)
 
     def test_advance_from_refactor_to_red(self):
         self.app.advance_stage()
         self.app.advance_stage()
         self.app.advance_stage()
-        self.assertEqual(self.app.stage, RedStage)
+        self.assertIsInstance(self.app.stage, RedStage)
 
     def test_app_has_ui(self):
         self.assertIsInstance(self.app.ui, UI)
