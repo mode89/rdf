@@ -1,5 +1,8 @@
 import debug
+from pyqtkeybind import keybinder
 from PyQt5 import uic
+from PyQt5.QtCore import QAbstractEventDispatcher
+from PyQt5.QtCore import QAbstractNativeEventFilter
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QApplication
 from PyQt5.QtWidgets import QLabel
@@ -19,7 +22,17 @@ class UI:
         assert self.stage_name_label
         self.stage_hint_label = self.window.findChild(QLabel, "stage_hint")
         assert self.stage_hint_label
-        self.window.keyPressEvent = self.on_key_press_event
+        self.register_hotkey()
+
+    def register_hotkey(self):
+        keybinder.init()
+        keybinder.register_hotkey(
+            self.window.winId(),
+            "Alt+F12",
+            self.on_advance_stage_keyboard_event)
+        self.event_filter = NativeEventFilter(keybinder)
+        self.event_dispatcher = QAbstractEventDispatcher.instance()
+        self.event_dispatcher.installNativeEventFilter(self.event_filter)
 
     def run(self):
         self.app.exec_()
@@ -44,6 +57,12 @@ class UI:
     def on_advance_stage_keyboard_event(self):
         self.advance_stage_callback()
 
-    def on_key_press_event(self, event):
-        if event.key() == Qt.Key_Space:
-            self.on_advance_stage_keyboard_event()
+class NativeEventFilter(QAbstractNativeEventFilter):
+
+    def __init__(self, keybinder):
+        self.keybinder = keybinder
+        super().__init__()
+
+    def nativeEventFilter(self, eventType, message):
+        ret = self.keybinder.handler(eventType, message)
+        return ret, 0

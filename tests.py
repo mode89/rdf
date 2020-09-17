@@ -62,9 +62,12 @@ class TestUI(unittest.TestCase):
         self.uic_mock = self.uic_patcher.start()
         self.uic_mock.loadUi.return_value = mock.create_autospec(
             PyQt5.QtWidgets.QMainWindow)
+        self.register_hotkey_patcher = mock.patch("ui.UI.register_hotkey")
+        self.register_hotkey_patcher.start()
         self.ui = UI()
 
     def tearDown(self):
+        self.register_hotkey_patcher.stop()
         self.uic_patcher.stop()
         self.qapplication_patcher.stop()
 
@@ -126,16 +129,8 @@ class TestUI(unittest.TestCase):
         self.ui.on_advance_stage_keyboard_event()
         callback.assert_called_once()
 
-    def test_set_key_press_event_handler(self):
-        self.assertEqual(
-            self.ui.window.keyPressEvent, self.ui.on_key_press_event)
-
-    @mock.patch("ui.UI.on_advance_stage_keyboard_event")
-    def test_fire_advance_stage_event_on_space_pressed(self, mock_callback):
-        event = mock.create_autospec(QKeyEvent)
-        event.key = mock.Mock(return_value=Qt.Key_Space)
-        self.ui.on_key_press_event(event)
-        self.ui.on_advance_stage_keyboard_event.assert_called_once()
+    def test_register_hotkey(self):
+        self.ui.register_hotkey.assert_called_once()
 
 if __name__ == "__main__":
     unittest.main()
