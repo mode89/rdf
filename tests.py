@@ -3,6 +3,8 @@ from app import GreenStage
 from app import RedStage
 from app import RefactorStage
 import PyQt5
+from PyQt5.QtCore import Qt
+from PyQt5.QtGui import QKeyEvent
 from ui import UI
 import unittest
 from unittest import mock
@@ -109,6 +111,17 @@ class TestUI(unittest.TestCase):
         self.ui.set_advance_stage_callback(callback)
         self.ui.on_advance_stage_keyboard_event()
         callback.assert_called_once()
+
+    def test_set_key_press_event_handler(self):
+        self.assertEqual(
+            self.ui.window.keyPressEvent, self.ui.on_key_press_event)
+
+    @mock.patch("ui.UI.on_advance_stage_keyboard_event")
+    def test_fire_advance_stage_event_on_space_pressed(self, mock_callback):
+        event = mock.create_autospec(QKeyEvent)
+        event.key = mock.Mock(return_value=Qt.Key_Space)
+        self.ui.on_key_press_event(event)
+        self.ui.on_advance_stage_keyboard_event.assert_called_once()
 
 if __name__ == "__main__":
     unittest.main()

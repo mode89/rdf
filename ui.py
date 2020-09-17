@@ -19,6 +19,7 @@ class UI:
         assert self.stage_name_label
         self.stage_hint_label = self.window.findChild(QLabel, "stage_hint")
         assert self.stage_hint_label
+        self.window.keyPressEvent = self.on_key_press_event
 
     def run(self):
         self.app.exec_()
@@ -42,3 +43,7 @@ class UI:
 
     def on_advance_stage_keyboard_event(self):
         self.advance_stage_callback()
+
+    def on_key_press_event(self, event):
+        if event.key() == QtCore.Qt.Key_Space:
+            self.on_advance_stage_keyboard_event()
