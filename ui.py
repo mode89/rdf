@@ -1,3 +1,4 @@
+import debug
 from PyQt5 import QtCore
 from PyQt5 import uic
 from PyQt5.QtWidgets import QApplication
@@ -23,10 +24,10 @@ class UI:
         self.set_stage_color(stage.color)
 
     def set_stage_name(self, name):
-        raise NotImplementedError()
+        debug.not_implemented()
 
     def set_stage_hint(self, hint):
-        raise NotImplementedError()
+        debug.not_implemented()
 
     def set_stage_color(self, color):
-        raise NotImplementedError()
+        debug.not_implemented()
