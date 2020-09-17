@@ -1,6 +1,7 @@
 from app import App
+from app import GreenStage
 from app import RedStage
-from app import Stage
+from app import RefactorStage
 import PyQt5
 from ui import UI
 import unittest
@@ -17,22 +18,22 @@ class TestApp(unittest.TestCase):
         self.ui_class_patcher.stop()
 
     def test_initial_stage_is_red(self):
-        self.assertEqual(self.app.stage, Stage.RED)
+        self.assertEqual(self.app.stage, RedStage)
 
     def test_advance_from_red_to_green(self):
         self.app.advance_stage()
-        self.assertEqual(self.app.stage, Stage.GREEN)
+        self.assertEqual(self.app.stage, GreenStage)
 
     def test_advance_from_green_to_refactor(self):
         self.app.advance_stage()
         self.app.advance_stage()
-        self.assertEqual(self.app.stage, Stage.REFACTOR)
+        self.assertEqual(self.app.stage, RefactorStage)
 
     def test_advance_from_refactor_to_red(self):
         self.app.advance_stage()
         self.app.advance_stage()
         self.app.advance_stage()
-        self.assertEqual(self.app.stage, Stage.RED)
+        self.assertEqual(self.app.stage, RedStage)
 
     def test_app_has_ui(self):
         self.assertIsInstance(self.app.ui, UI)
