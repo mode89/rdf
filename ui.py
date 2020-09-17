@@ -2,6 +2,7 @@ import debug
 from PyQt5 import QtCore
 from PyQt5 import uic
 from PyQt5.QtWidgets import QApplication
+from PyQt5.QtWidgets import QLabel
 from PyQt5.QtWidgets import QMainWindow
 import sys
 
@@ -14,6 +15,8 @@ class UI:
         self.window.setWindowFlag(QtCore.Qt.Tool)
         self.window.setAttribute(QtCore.Qt.WA_QuitOnClose)
         self.window.show()
+        self.stage_name_label = self.window.findChild(QLabel, "stage_name")
+        assert self.stage_name_label
 
     def run(self):
         self.app.exec_()
@@ -24,7 +27,7 @@ class UI:
         self.set_stage_color(stage.color)
 
     def set_stage_name(self, name):
-        debug.not_implemented()
+        self.stage_name_label.setText(name)
 
     def set_stage_hint(self, hint):
         debug.not_implemented()

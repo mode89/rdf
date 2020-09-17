@@ -93,5 +93,9 @@ class TestUI(unittest.TestCase):
         self.ui.set_stage_hint.assert_called_with(stage.hint)
         self.ui.set_stage_color.assert_called_with(stage.color)
 
+    def test_set_stage_name(self):
+        self.ui.set_stage_name("Red")
+        self.ui.stage_name_label.setText.assert_called_with("Red")
+
 if __name__ == "__main__":
     unittest.main()
