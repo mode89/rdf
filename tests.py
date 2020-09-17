@@ -47,6 +47,9 @@ class TestApp(unittest.TestCase):
         ui_apply_stage_first_argument = self.app.ui.apply_stage.call_args[0][0]
         self.assertIsInstance(ui_apply_stage_first_argument, RedStage)
 
+    def test_set_advance_stage_callback(self):
+        self.app.ui.set_advance_stage_callback.assert_called_once()
+
 class TestUI(unittest.TestCase):
 
     def setUp(self):

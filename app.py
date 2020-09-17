@@ -4,6 +4,7 @@ class App:
 
     def __init__(self):
         self.ui = UI()
+        self.ui.set_advance_stage_callback(self.advance_stage)
         self.apply_stage_class(RedStage)
 
     def run(self):
