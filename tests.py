@@ -79,10 +79,8 @@ class TestUI(unittest.TestCase):
         self.ui.app.exec_.assert_called_once()
 
     def test_create_tool_window(self):
-        self.ui.window.setWindowFlag.assert_called_with(
-            PyQt5.QtCore.Qt.Tool)
-        self.ui.window.setAttribute.assert_called_with(
-            PyQt5.QtCore.Qt.WA_QuitOnClose)
+        self.ui.window.setWindowFlag.assert_called_with(Qt.Tool)
+        self.ui.window.setAttribute.assert_called_with(Qt.WA_QuitOnClose)
 
     @mock.patch("ui.UI.set_stage_name")
     @mock.patch("ui.UI.set_stage_hint")
