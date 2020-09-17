@@ -65,5 +65,11 @@ class TestUI(unittest.TestCase):
         self.ui.run()
         self.ui.app.exec_.assert_called_once()
 
+    def test_create_tool_window(self):
+        self.ui.window.setWindowFlag.assert_called_with(
+            PyQt5.QtCore.Qt.Tool)
+        self.ui.window.setAttribute.assert_called_with(
+            PyQt5.QtCore.Qt.WA_QuitOnClose)
+
 if __name__ == "__main__":
     unittest.main()
