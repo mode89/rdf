@@ -1,4 +1,6 @@
-from app import Stage, App
+from app import App
+from app import RedStage
+from app import Stage
 import PyQt5
 from ui import UI
 import unittest
@@ -71,7 +73,14 @@ class TestUI(unittest.TestCase):
         self.ui.window.setAttribute.assert_called_with(
             PyQt5.QtCore.Qt.WA_QuitOnClose)
 
-    def test_apply_red_stage(self):
+    @mock.patch("ui.UI.set_stage_name")
+    @mock.patch("ui.UI.set_stage_hint")
+    @mock.patch("ui.UI.set_stage_color")
+    def test_apply_red_stage(
+            self,
+            mock_set_stage_color,
+            mock_set_stage_hint,
+            mock_set_stage_name):
         stage = RedStage()
         self.ui.apply_stage(stage)
         self.ui.set_stage_name.assert_called_with(stage.name)

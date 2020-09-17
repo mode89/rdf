@@ -16,3 +16,17 @@ class UI:
 
     def run(self):
         self.app.exec_()
+
+    def apply_stage(self, stage):
+        self.set_stage_name(stage.name)
+        self.set_stage_hint(stage.hint)
+        self.set_stage_color(stage.color)
+
+    def set_stage_name(self, name):
+        raise NotImplementedError()
+
+    def set_stage_hint(self, hint):
+        raise NotImplementedError()
+
+    def set_stage_color(self, color):
+        raise NotImplementedError()
