@@ -20,6 +20,13 @@ class App:
         elif self.stage == Stage.REFACTOR:
             self.stage = Stage.RED
 
+class RedStage:
+
+    def __init__(self):
+        self.name = "RED"
+        self.hint = "Write a test, watch it fail"
+        self.color = "red"
+
 if __name__ == "__main__":
     app = App()
     app.run()
