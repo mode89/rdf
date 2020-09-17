@@ -33,4 +33,4 @@ class UI:
         debug.not_implemented()
 
     def set_stage_color(self, color):
-        debug.not_implemented()
+        self.window.setStyleSheet("background-color: {}".format(color))
