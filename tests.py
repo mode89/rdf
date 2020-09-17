@@ -96,6 +96,22 @@ class TestUI(unittest.TestCase):
         self.ui.set_stage_hint.assert_called_with(stage.hint)
         self.ui.set_stage_color.assert_called_with(stage.color)
 
+    @mock.patch("ui.UI.set_stage_name")
+    @mock.patch("ui.UI.set_stage_hint")
+    @mock.patch("ui.UI.set_stage_color")
+    def test_apply_stages(
+            self,
+            mock_set_stage_color,
+            mock_set_stage_hint,
+            mock_set_stage_name):
+        stages = [ RedStage, GreenStage, RefactorStage ]
+        for stage_class in stages:
+            stage = stage_class()
+            self.ui.apply_stage(stage)
+            self.ui.set_stage_name.assert_called_with(stage.name)
+            self.ui.set_stage_hint.assert_called_with(stage.hint)
+            self.ui.set_stage_color.assert_called_with(stage.color)
+
     def test_set_stage_name(self):
         self.ui.set_stage_name("Red")
         self.ui.stage_name_label.setText.assert_called_with("Red")

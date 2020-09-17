@@ -31,11 +31,17 @@ class RedStage:
 
 class GreenStage:
 
-    pass
+    def __init__(self):
+        self.name = "GREEN"
+        self.hint = "Write just enough code to pass the test"
+        self.color = "green"
 
 class RefactorStage:
 
-    pass
+    def __init__(self):
+        self.name = "REFACTOR"
+        self.hint = "Improve the code without changing its behavior"
+        self.color = "blue"
 
 if __name__ == "__main__":
     app = App()
