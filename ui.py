@@ -17,12 +17,12 @@ class UI:
         assert isinstance(self.window, QMainWindow)
         self.window.setWindowFlag(Qt.Tool)
         self.window.setAttribute(Qt.WA_QuitOnClose)
-        self.window.show()
         self.stage_name_label = self.window.findChild(QLabel, "stage_name")
         assert self.stage_name_label
         self.stage_hint_label = self.window.findChild(QLabel, "stage_hint")
         assert self.stage_hint_label
         self.register_hotkey()
+        self.window.show()
 
     def register_hotkey(self):
         keybinder.init()
