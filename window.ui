@@ -17,6 +17,9 @@
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
      <widget class="QLabel" name="stage_name">
+      <property name="styleSheet">
+       <string notr="true">color: white</string>
+      </property>
       <property name="text">
        <string>Stage Name</string>
       </property>
@@ -27,6 +30,9 @@
     </item>
     <item>
      <widget class="QLabel" name="stage_hint">
+      <property name="styleSheet">
+       <string notr="true">color: white</string>
+      </property>
       <property name="text">
        <string>Stage Hint</string>
       </property>
