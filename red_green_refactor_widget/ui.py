@@ -1,4 +1,5 @@
-import debug
+from . import debug
+import os
 from pyqtkeybind import keybinder
 from PyQt5 import uic
 from PyQt5.QtCore import QAbstractEventDispatcher

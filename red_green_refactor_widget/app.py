@@ -1,4 +1,4 @@
-from ui import UI
+from .ui import UI
 
 class App:
 
