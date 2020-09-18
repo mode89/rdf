@@ -85,7 +85,7 @@ class TestUI(unittest.TestCase):
         self.ui.app.exec_.assert_called_once()
 
     def test_create_tool_window(self):
-        self.ui.window.setWindowFlag.assert_called_with(Qt.Tool)
+        self.ui.window.setWindowFlag.assert_any_call(Qt.Tool)
         self.ui.window.setAttribute.assert_called_with(Qt.WA_QuitOnClose)
 
     @mock.patch("red_green_refactor_widget.ui.UI.set_stage_name")
