@@ -13,7 +13,9 @@ class UI:
 
     def __init__(self):
         self.app = QApplication(sys.argv)
-        self.window = uic.loadUi("window.ui")
+        ui_dir = os.path.dirname(os.path.abspath(__file__))
+        ui_path = os.path.join(ui_dir, "window.ui")
+        self.window = uic.loadUi(ui_path)
         assert isinstance(self.window, QMainWindow)
         self.window.setWindowFlag(Qt.Tool)
         self.window.setWindowFlag(Qt.WindowStaysOnTopHint)
