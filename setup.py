@@ -16,6 +16,8 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="http://github.com/mode89/red-green-refactor-widget",
     packages=setuptools.find_packages(),
+    package_data={ "red_green_refactor_widget": [ "window.ui" ] },
+    include_pacakge_data=True,
     entry_points={
         "console_scripts":
             ["red-green-refactor-widget=red_green_refactor_widget.cli:main"],
