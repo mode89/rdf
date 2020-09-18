@@ -10,7 +10,7 @@ setuptools.setup(
     author="Andrey Krainyak",
     author_email="mode.andrew@gmail.com",
     description=\
-        "A simple user interface that will help you to stick with "
+        "A simple widget that will help you to stick to "
         "the red-green-refactor workflow",
     long_description=get_long_description(),
     long_description_content_type="text/markdown",
