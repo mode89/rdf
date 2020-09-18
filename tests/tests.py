@@ -1,18 +1,19 @@
-from app import App
-from app import GreenStage
-from app import RedStage
-from app import RefactorStage
+from red_green_refactor_widget.app import App
+from red_green_refactor_widget.app import GreenStage
+from red_green_refactor_widget.app import RedStage
+from red_green_refactor_widget.app import RefactorStage
+from red_green_refactor_widget.ui import UI
 import PyQt5
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QKeyEvent
-from ui import UI
 import unittest
 from unittest import mock
 
 class TestApp(unittest.TestCase):
 
     def setUp(self):
-        self.ui_class_patcher = mock.patch("app.UI", autospec=True)
+        self.ui_class_patcher = mock.patch(
+            "red_green_refactor_widget.app.UI", autospec=True)
         self.ui_class_patcher.start()
         self.app = App()
 
@@ -56,13 +57,15 @@ class TestUI(unittest.TestCase):
 
     def setUp(self):
         self.qapplication_patcher = mock.patch(
-            "ui.QApplication", autospec=True)
+            "red_green_refactor_widget.ui.QApplication", autospec=True)
         self.qapplication_patcher.start()
-        self.uic_patcher = mock.patch("ui.uic", autospec=True)
+        self.uic_patcher = mock.patch(
+            "red_green_refactor_widget.ui.uic", autospec=True)
         self.uic_mock = self.uic_patcher.start()
         self.uic_mock.loadUi.return_value = mock.create_autospec(
             PyQt5.QtWidgets.QMainWindow)
-        self.register_hotkey_patcher = mock.patch("ui.UI.register_hotkey")
+        self.register_hotkey_patcher = mock.patch(
+            "red_green_refactor_widget.ui.UI.register_hotkey")
         self.register_hotkey_patcher.start()
         self.ui = UI()
 
@@ -85,9 +88,9 @@ class TestUI(unittest.TestCase):
         self.ui.window.setWindowFlag.assert_called_with(Qt.Tool)
         self.ui.window.setAttribute.assert_called_with(Qt.WA_QuitOnClose)
 
-    @mock.patch("ui.UI.set_stage_name")
-    @mock.patch("ui.UI.set_stage_hint")
-    @mock.patch("ui.UI.set_stage_color")
+    @mock.patch("red_green_refactor_widget.ui.UI.set_stage_name")
+    @mock.patch("red_green_refactor_widget.ui.UI.set_stage_hint")
+    @mock.patch("red_green_refactor_widget.ui.UI.set_stage_color")
     def test_apply_red_stage(
             self,
             mock_set_stage_color,
@@ -99,9 +102,9 @@ class TestUI(unittest.TestCase):
         self.ui.set_stage_hint.assert_called_with(stage.hint)
         self.ui.set_stage_color.assert_called_with(stage.color)
 
-    @mock.patch("ui.UI.set_stage_name")
-    @mock.patch("ui.UI.set_stage_hint")
-    @mock.patch("ui.UI.set_stage_color")
+    @mock.patch("red_green_refactor_widget.ui.UI.set_stage_name")
+    @mock.patch("red_green_refactor_widget.ui.UI.set_stage_hint")
+    @mock.patch("red_green_refactor_widget.ui.UI.set_stage_color")
     def test_apply_stages(
             self,
             mock_set_stage_color,
@@ -131,6 +134,3 @@ class TestUI(unittest.TestCase):
 
     def test_register_hotkey(self):
         self.ui.register_hotkey.assert_called_once()
-
-if __name__ == "__main__":
-    unittest.main()
