@@ -3,7 +3,7 @@
 When you are learning to follow the _red-green-refactor_ workflow, this app
 will help you to keep track of your progress by reminding you of which stage
 of the workflow you are right now and which actions you need to undertake
-before proceeding to the next stage. See (Usage)[#Usage] section for details.
+before proceeding to the next stage. See **Usage** section for details.
 
 # Prerequisites
 
