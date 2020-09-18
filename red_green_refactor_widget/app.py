@@ -42,7 +42,3 @@ class RefactorStage:
         self.name = "REFACTOR"
         self.hint = "Improve the code without changing its behavior"
         self.color = "blue"
-
-if __name__ == "__main__":
-    app = App()
-    app.run()

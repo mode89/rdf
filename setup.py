@@ -16,6 +16,10 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="http://github.com/mode89/red-green-refactor-widget",
     packages=setuptools.find_packages(),
+    entry_points={
+        "console_scripts":
+            ["red-green-refactor-widget=red_green_refactor_widget.cli:main"],
+    },
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
