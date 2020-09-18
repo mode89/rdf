@@ -1,15 +1,9 @@
 # Red-Green-Refactor Widget
 
-A simple user interface that will help you to stick to
-the red-green-refactor workflow.
-
-After you launched the app, you should see a small window. It displays
-a stage of the red-green-refactor workflow.
-When you finished a stage, press the hotkey _Alt+F12_, and the widget will
-change to the next stage of the workflow.
-By default, the window is created with the always-on-top flag on,
-and the hotkey is global, thus you don't need to worry about keeping
-the window in focus.
+When you are learning to follow the _red-green-refactor_ workflow, this app
+will help you to keep track of your progress by reminding you of which stage
+of the workflow you are right now and which actions you need to undertake
+before proceeding to the next stage. See (Usage)[#Usage] section for details.
 
 # Prerequisites
 
@@ -39,6 +33,13 @@ To launch the app, simply run the following command from terminal:
 ```
 $ red-green-refactor-widget
 ```
+After you launched the app, you should see a small window. It displays
+a stage of the red-green-refactor workflow.
+When you finished a stage, press _Alt-F12_, and the widget will
+change to the next stage of the workflow.
+By default, the window is created with the always-on-top flag on,
+and the hotkey is global, thus you don't need to worry about keeping
+the window in focus.
 
 # License
 
