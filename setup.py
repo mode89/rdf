@@ -18,6 +18,10 @@ setuptools.setup(
     packages=setuptools.find_packages(),
     package_data={ "red_green_refactor_widget": [ "window.ui" ] },
     include_pacakge_data=True,
+    install_requires=[
+        "PyQt5",
+        "pyqtkeybind",
+    ],
     entry_points={
         "console_scripts":
             ["red-green-refactor-widget=red_green_refactor_widget.cli:main"],
