@@ -16,6 +16,7 @@ class UI:
         self.window = uic.loadUi("window.ui")
         assert isinstance(self.window, QMainWindow)
         self.window.setWindowFlag(Qt.Tool)
+        self.window.setWindowFlag(Qt.WindowStaysOnTopHint)
         self.window.setAttribute(Qt.WA_QuitOnClose)
         self.stage_name_label = self.window.findChild(QLabel, "stage_name")
         assert self.stage_name_label
